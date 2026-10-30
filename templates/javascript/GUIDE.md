@@ -7,10 +7,10 @@ canvas board, an `add_item` agent tool and a `session.placed` subscription). Rew
 ## The loop
 
 1. Edit the files here: `rivethub-plugin.json` (the manifest), `plugin.js` (the program) and any modules you add.
-2. Call `plugins__install` with this plug-in's id. It checks the manifest (an invalid one changes nothing and the answer
+2. Call `plugins-install` with this plug-in's id. It checks the manifest (an invalid one changes nothing and the answer
    names the field), installs the folder or reloads it, waits for the process to start and asks each page for its view
    the way the apps do. Read the whole answer: it says whether the plug-in runs, why not, and what to do next.
-3. Call `plugins__status` to read its state and its last log lines: your `console.log` and `console.error` output, a
+3. Call `plugins-status` to read its state and its last log lines: your `console.log` and `console.error` output, a
    crash's stack trace, and rh's own lines, marked `host` (start, exit status, and every answer rh refused or that
    failed, with the field it refused).
 4. Fix what the answer or the log names and go back to 2. Repeat until it runs and its pages answer valid views.
@@ -36,7 +36,7 @@ When an answer says a person has to act, tell them exactly that.
 `manifest` 1; `id` (2 to 24 of `a-z`, `0-9` and single hyphens; it must stay the folder's name); `name`; `version`;
 `description`; `icon` (a Material Symbols name, as every icon here); `run.command` (`["node", "plugin.js"]`);
 `permissions`; `settings` (fields as in a form, drawn in Settings, read with `rh.self()` and the `settings` handler);
-`tools` (`{name, title?, description, inputSchema, hints?}`, offered to agents as `<id>__<name>`; `name` uses `a-z`,
+`tools` (`{name, title?, description, inputSchema, hints?}`, offered to agents as `<id>-<name>`; `name` uses `a-z`,
 `0-9` and single underscores); `contributes.pages` (`{id, title, icon?, view}`: a sidebar entry opening that view),
 `contributes.topicCards` (`{id, title, view}`: a card in a topic, its view gets `context.topicId`) and
 `contributes.sessionActions` (`{id, title, icon?, action}`: a session menu entry, `context.sessionId`); `jobs` (`{id,
