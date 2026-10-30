@@ -1,0 +1,32 @@
+{
+  "manifest": 1,
+  "id": "voice",
+  "name": "Voice",
+  "version": "0.1.0",
+  "description": "Speech to text and text to speech for the composer, through the STT and TTS servers this node is set up with.",
+  "icon": "mic",
+  "run": { "command": ["node", "dist/plugin.js"] },
+  "permissions": ["host.network"],
+  "settings": [
+    {
+      "key": "sttUrl",
+      "label": "Transcription URL",
+      "input": { "type": "text" },
+      "help": "An OpenAI-compatible transcription endpoint that takes a multipart file and answers {text}.",
+      "placeholder": "https://stt.example.com/v1/audio/transcriptions"
+    },
+    {
+      "key": "ttsUrl",
+      "label": "Speech URL",
+      "input": { "type": "text" },
+      "help": "An OpenAI-compatible speech endpoint that takes {input, response_format, instructions?, voice?}.",
+      "placeholder": "https://tts.example.com/v1/audio/speech"
+    },
+    {
+      "key": "instructions",
+      "label": "Speaking instructions",
+      "input": { "type": "text", "multiline": true },
+      "help": "Sent with each request that brings none of its own."
+    }
+  ]
+}

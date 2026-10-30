@@ -15,6 +15,8 @@ gets promoted into the platform, with its domain moving into a runtime context a
   a list (and a canvas board in TypeScript), an `add_item` agent tool and a `session.placed` subscription.
 - `templates/javascript`: the same checklist with its canvas board, in JavaScript that Node runs as it is, and a
   `GUIDE.md` for an agent building from it. It is the template rh's plug-in creator scaffolds from.
+- `plugins/voice`: speech to text and text to speech for the composer, on `http/transcribe` and `http/speak`, through
+  the STT and TTS servers named in its settings. It replaces rh's `/api/voice` routes.
 
 ## The contract
 
