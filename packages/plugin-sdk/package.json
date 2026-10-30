@@ -1,6 +1,6 @@
 {
   "name": "@rivethub/plugin-sdk",
-  "version": "0.0.0",
+  "version": "0.7.0",
   "private": true,
   "type": "module",
   "exports": {
@@ -10,6 +10,6 @@
     "rivethub-plugin-dev": "./src/dev.ts"
   },
   "dependencies": {
-    "@rivethub/contract": "0.0.0"
+    "@rivethub/contract": "0.7.0"
   }
 }

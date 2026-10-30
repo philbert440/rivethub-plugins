@@ -1,6 +1,6 @@
 [package]
 name = "rivethub-plugin"
-version = "0.1.0"
+version = "0.7.0"
 edition = "2024"
 rust-version = "1.88"
 description = "Write RivetHub plug-ins in Rust: serve views, actions, canvases, tools, events and settings, and call rh"

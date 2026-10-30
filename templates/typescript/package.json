@@ -8,7 +8,7 @@
     "dev": "npm run build && rivethub-plugin-dev ."
   },
   "dependencies": {
-    "@rivethub/plugin-sdk": "0.0.0"
+    "@rivethub/plugin-sdk": "0.7.0"
   },
   "devDependencies": {
     "esbuild": "0.28.2"
