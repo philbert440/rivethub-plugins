@@ -1,0 +1,26 @@
+{
+  "manifest": 1,
+  "id": "checklist-rust",
+  "name": "Checklist (Rust)",
+  "version": "0.1.0",
+  "description": "A checklist you and your agents add to, with the sessions filed lately.",
+  "icon": "checklist",
+  "run": { "command": ["target/release/checklist-rust"] },
+  "permissions": ["sessions.read"],
+  "tools": [
+    {
+      "name": "add_item",
+      "title": "Add a checklist item",
+      "description": "Add an item to the checklist and return how many items are open.",
+      "inputSchema": {
+        "type": "object",
+        "properties": { "title": { "type": "string", "description": "What needs doing" } },
+        "required": ["title"]
+      }
+    }
+  ],
+  "contributes": {
+    "pages": [{ "id": "checklist", "title": "Checklist", "icon": "checklist", "view": "main" }]
+  },
+  "events": ["session.placed"]
+}
