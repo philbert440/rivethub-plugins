@@ -17,6 +17,7 @@
     "test": "node --test 'tests/**/*.test.ts'",
     "contract": "node scripts/contract.ts",
     "contract:check": "node scripts/contract.ts --check",
+    "templates:install": "node scripts/templates.ts",
     "privacy": "node scripts/privacy.ts --tracked",
     "rust": "cargo fmt --check --manifest-path rust/rivethub-plugin/Cargo.toml && cargo clippy --locked --all-targets --manifest-path rust/rivethub-plugin/Cargo.toml -- -D warnings && cargo test --locked --manifest-path rust/rivethub-plugin/Cargo.toml && cargo fmt --check --manifest-path templates/rust/Cargo.toml && cargo clippy --locked --all-targets --manifest-path templates/rust/Cargo.toml -- -D warnings"
   },

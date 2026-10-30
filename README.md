@@ -13,6 +13,8 @@ gets promoted into the platform, with its domain moving into a runtime context a
 - `rust/rivethub-plugin`: the `rivethub-plugin` crate, for plug-ins in Rust, in a Cargo workspace of its own.
 - `templates/typescript`, `templates/rust`: a checklist plug-in in each language to start from: a page with a form and
   a list (and a canvas board in TypeScript), an `add_item` agent tool and a `session.placed` subscription.
+- `templates/javascript`: the same checklist with its canvas board, in JavaScript that Node runs as it is, and a
+  `GUIDE.md` for an agent building from it. It is the template rh's plug-in creator scaffolds from.
 
 ## The contract
 
@@ -62,6 +64,16 @@ import from outside its directory, and a Rust plug-in runs its release binary.
 commands from stdin (`view main`, `action add {"values":{"title":"x"}}`, `tool add_item {"title":"x"}`,
 `event session.placed {...}`, `job <id>`), printing each answer. To run one on a node, `POST /api/plugins` with
 `{"path": "<absolute directory>"}` and enable it from a paired device.
+
+## Templates on a node
+
+rh's plug-in creator (note 70 of the runtime's CONTRACT) lets an agent on a node scaffold a plug-in from a template,
+edit it, install it and read its log through `rh mcp`. rh carries no templates; it reads them from the node's
+`<state>/plugin-templates/` (`~/.rivethub/plugin-templates/` unless the state folder moved), one folder each, and never
+fetches one. `npm run templates:install` writes the templates that need no build there: the `javascript` folder with
+`sdk/`, the SDK's own TypeScript sources, which Node 22.18 and later runs without a build. Pass another state folder as
+`npm run templates:install -- <folder>`. Run it again after pulling a newer SDK; plug-ins already scaffolded keep the
+SDK they were made with.
 
 ## Rules
 
