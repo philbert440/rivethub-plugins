@@ -17,5 +17,5 @@
     "noEmit": true,
     "skipLibCheck": true
   },
-  "include": ["scripts", "tests", "packages/*/src"]
+  "include": ["scripts", "tests", "packages/*/src", "templates/typescript/src"]
 }

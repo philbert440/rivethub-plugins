@@ -1,0 +1,26 @@
+{
+  "manifest": 1,
+  "id": "checklist-ts",
+  "name": "Checklist (TypeScript)",
+  "version": "0.1.0",
+  "description": "A checklist you and your agents add to, with a board to arrange it and the sessions filed lately.",
+  "icon": "checklist",
+  "run": { "command": ["node", "dist/plugin.js"] },
+  "permissions": ["sessions.read"],
+  "tools": [
+    {
+      "name": "add_item",
+      "title": "Add a checklist item",
+      "description": "Add an item to the checklist and return how many items are open.",
+      "inputSchema": {
+        "type": "object",
+        "properties": { "title": { "type": "string", "description": "What needs doing" } },
+        "required": ["title"]
+      }
+    }
+  ],
+  "contributes": {
+    "pages": [{ "id": "checklist", "title": "Checklist", "icon": "checklist", "view": "main" }]
+  },
+  "events": ["session.placed"]
+}

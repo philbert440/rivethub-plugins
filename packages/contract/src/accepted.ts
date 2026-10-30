@@ -1,20 +1,11 @@
-// Generated from philbert440/rivethub-runtime@ba386c48eca72acb93d9a26bafb9abd30a48253f contract/accepted.schema.json by npm run contract. Do not edit.
+// Generated from philbert440/rivethub-runtime@5d5cc2744c01cb9f991b65b74b9a859b1d35f517 contract/accepted.schema.json by npm run contract. Do not edit.
 
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "HarnessId".
  */
 export type HarnessId =
-  | "claude-code"
-  | "grok-build"
-  | "kimi-code"
-  | "hermes"
-  | "codex"
-  | "opencode"
-  | "pi"
-  | "qwen-code"
-  | "cursor"
-  | "cowork";
+  "claude-code" | "grok-build" | "kimi-code" | "hermes" | "codex" | "opencode" | "omp" | "dsh" | "cursor" | "cowork";
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "KnownHarness".
@@ -27,6 +18,21 @@ export type KnownHarness = string;
 export type AgentStoreBackend = "postgres" | "file";
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ThinkingLevel".
+ */
+export type ThinkingLevel = "off" | "low" | "medium" | "high" | "xhigh";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "HubSessionMode".
+ */
+export type HubSessionMode = "chat" | "terminal";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ProtocolVersion".
+ */
+export type ProtocolVersion = number;
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "SessionId".
  */
 export type SessionId = string;
@@ -35,11 +41,6 @@ export type SessionId = string;
  * via the `definition` "CatalogAgent".
  */
 export type CatalogAgent = Preset | CatalogNode;
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "McpInjection".
- */
-export type McpInjection = "flag" | "cwdFile" | "persistentConfig" | "none";
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "Activity".
@@ -139,11 +140,6 @@ export type AudioMicClientFrame =
     };
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "ProtocolVersion".
- */
-export type ProtocolVersion = number;
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "FileEntryKind".
  */
 export type FileEntryKind = "dir" | "file";
@@ -179,14 +175,14 @@ export type BrowseWindow = "today" | "yesterday" | "this_morning" | "this_week" 
 export type MemoryScope = "messages" | "summaries" | "both";
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "MemoryHitSource".
- */
-export type MemoryHitSource = "message" | "summary";
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "Role".
  */
 export type Role = "system" | "user" | "assistant" | "tool";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "MemoryHitSource".
+ */
+export type MemoryHitSource = "message" | "summary";
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "MemoryFallback".
@@ -237,6 +233,11 @@ export type ContentPart =
   | MediaFields1;
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "VectorState".
+ */
+export type VectorState = "embedded" | "pending" | "failed" | "skipped";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "MemoryHealthStatus".
  */
 export type MemoryHealthStatus = "ok" | "degraded" | "error";
@@ -267,6 +268,21 @@ export type ProjectRule = "git-remote" | "git-root" | "cwd-basename";
 export type ProviderRecovery = "retrying" | "permanent";
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "SessionDeleteError".
+ */
+export type SessionDeleteError = "session is live" | "not found" | "delete failed";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "SessionDeleteResult".
+ */
+export type SessionDeleteResult = SessionDeleted | SessionDeleteRefused;
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "SessionTrashReason".
+ */
+export type SessionTrashReason = "empty" | "one-word-reply";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "ContextSource".
  */
 export type ContextSource = "spawn" | "default" | "observed";
@@ -277,9 +293,9 @@ export type ContextSource = "spawn" | "default" | "observed";
 export type SessionMessageRole = "user" | "assistant";
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "ThinkingLevel".
+ * via the `definition` "SteerOutcome".
  */
-export type ThinkingLevel = "off" | "low" | "medium" | "high" | "xhigh";
+export type SteerOutcome = "steered" | "startedNewTurn" | "promptRequired";
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "SessionClientKind".
@@ -330,6 +346,11 @@ export type TranscriptToolStatus = "running" | "done" | "error";
 export type TranscriptBlock = "thinking" | "text" | "tool_use" | "tool_result";
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "SessionPreviewKind".
+ */
+export type SessionPreviewKind = "running" | "asking" | "approval" | "said";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "Millis".
  */
 export type Millis = string;
@@ -343,6 +364,32 @@ export type HarnessSessionStatus = "active" | "idle" | "ended" | "error";
  * via the `definition` "Transport".
  */
 export type Transport = "protocol";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "StartupKind".
+ */
+export type StartupKind = "topic" | "recent" | "relevant";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "StartupSource".
+ */
+export type StartupSource =
+  | {
+      session: SessionId;
+    }
+  | {
+      wiki: WikiSlug;
+    };
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "WikiSlug".
+ */
+export type WikiSlug = string;
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "DeliveredVia".
+ */
+export type DeliveredVia = "metaAppend" | "cliFlag" | "none";
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "HarnessSocketRefusalCode".
@@ -443,23 +490,107 @@ export type FinishReason = "stop" | "length" | "tool_calls" | "content_filter";
 export type ErrorKind = "invalid_request_error" | "server_error";
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "WikiSlug".
- */
-export type WikiSlug = string;
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "WikiSourceKind".
  */
-export type WikiSourceKind = "summary" | "message" | "conversation" | "task" | "leaf" | "extract-wiki";
+export type WikiSourceKind = "summary" | "message" | "conversation" | "task" | "leaf" | "extract-wiki" | "user";
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "AgentEvent".
+ * via the `definition` "ProposalState".
  */
-export type AgentEvent = {
-  v: ProtocolVersion;
-  session: string;
-} & AgentEvent1;
-export type AgentEvent1 =
+export type ProposalState = "pending" | "approved" | "rejected";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "Proposer".
+ */
+export type Proposer = "categorizer" | "backfill";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TidyChange".
+ */
+export type TidyChange =
+  | {
+      kind: "merge";
+      source: string;
+      into: string;
+    }
+  | {
+      kind: "move";
+      topic: string;
+      parent?: string | null;
+    }
+  | {
+      kind: "rename";
+      topic: string;
+      name: string;
+    }
+  | {
+      kind: "close";
+      topic: string;
+    }
+  | {
+      kind: "delete";
+      topic: string;
+    }
+  | {
+      kind: "createTopic";
+      topic: string;
+      name: string;
+      parent?: string | null;
+      aliases?: string[];
+      sessions?: SessionId[];
+      conversations?: string[];
+    }
+  | {
+      kind: "fileInto";
+      topic: string;
+      sessions?: SessionId[];
+      conversations?: string[];
+    }
+  | {
+      kind: "mergePage";
+      page: string;
+      into: string;
+    }
+  | {
+      kind: "removePage";
+      page: string;
+    }
+  | {
+      kind: "addType";
+      topic: string;
+      name: string;
+      parent?: string | null;
+    };
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TopicDirectory".
+ */
+export type TopicDirectory =
+  | {
+      kind: "local";
+      node: string;
+      path: string;
+    }
+  | {
+      kind: "shared";
+      path: string;
+    };
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TopicKind".
+ */
+export type TopicKind = "work" | "type" | "entity";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PlacedBy".
+ */
+export type PlacedBy = "you" | "categorizer";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "DecisionStatus".
+ */
+export type DecisionStatus = "active" | "superseded";
+export type AgentEvent =
   | {
       type: "session.start";
       title?: string | null;
@@ -584,9 +715,9 @@ export type AgentEventKind =
     };
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "SessionBroadcast".
+ * via the `definition` "ContextUsageSource".
  */
-export type SessionBroadcast = Snapshot | SessionRemoved | AgentEvent;
+export type ContextUsageSource = "harness" | "last-call";
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "HookEventName".
@@ -904,17 +1035,17 @@ export type HookConfigKind = "shell" | "http" | "internal";
  * via the `definition` "RosterCommand".
  */
 export type RosterCommand =
-  "claude" | "grok" | "kimi" | "opencode" | "hermes" | "codex" | "pi" | "qwen" | "cursor" | "cowork";
+  "claude" | "grok" | "kimi" | "opencode" | "hermes" | "codex" | "omp" | "dsh" | "cursor" | "cowork";
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "ApprovalDecision".
  */
-export type ApprovalDecision = "allow" | "deny" | "allowSession";
+export type ApprovalDecision = "allow" | "deny" | "allow-session";
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "ApprovalOutcome".
  */
-export type ApprovalOutcome = "allow" | "deny" | "allowSession" | "external";
+export type ApprovalOutcome = "allow" | "deny" | "allow-session" | "external";
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "HarnessStatus".
@@ -958,6 +1089,15 @@ export type HarnessEvent =
       turnId?: string | null;
     }
   | {
+      type: "tool-update";
+      sessionId: SessionId;
+      toolCallId: string;
+      input: {
+        [k: string]: unknown;
+      };
+      turnId?: string | null;
+    }
+  | {
       type: "tool-result";
       sessionId: SessionId;
       toolCallId: string;
@@ -991,10 +1131,24 @@ export type HarnessEvent =
       supersedes?: SessionId | null;
     }
   | {
+      type: "plan";
+      sessionId: SessionId;
+      entries: PlanEntry[];
+    }
+  | {
       type: "turn-complete";
       sessionId: SessionId;
       turnId?: string | null;
       stopReason?: string | null;
+      usage?: LlmUsage | null;
+      modelMs?: number | null;
+    }
+  | {
+      type: "context";
+      sessionId: SessionId;
+      used: number;
+      window?: number | null;
+      source: ContextUsageSource;
     }
   | {
       type: "error";
@@ -1038,6 +1192,11 @@ export type HarnessEvent =
     };
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PlanStatus".
+ */
+export type PlanStatus = "pending" | "in_progress" | "completed";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "PromptKind".
  */
 export type PromptKind = "ask-user";
@@ -1057,22 +1216,13 @@ export type HarnessCode =
   | "turn_in_flight"
   | "capability_unsupported"
   | "unknown_approval"
-  | "unknown_prompt";
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "TaskExecutorKind".
- */
-export type TaskExecutorKind = "chat-loop" | "harness-session" | "mesh";
+  | "unknown_prompt"
+  | "turn_failed";
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "TaskVerdict".
  */
 export type TaskVerdict = "completed" | "failed" | "killed" | "timeout" | "budget-exceeded";
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "ContextRefKind".
- */
-export type ContextRefKind = "conversation" | "message" | "task" | "file" | "url" | "wiki";
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "CriterionKind".
@@ -1085,92 +1235,590 @@ export type CriterionKind = "manual" | "automated";
 export type Effort = "low" | "medium" | "high";
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "TaskIsolation".
- */
-export type TaskIsolation = "inherit" | "isolated";
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "TaskPromptMode".
- */
-export type TaskPromptMode = "task" | "heartbeat";
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "TaskPermissionOutcome".
- */
-export type TaskPermissionOutcome = "allow" | "deny" | "timeout";
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "ArtifactKind".
- */
-export type ArtifactKind = "file" | "url" | "commit" | "message";
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "EvalVerdict".
- */
-export type EvalVerdict = "verified" | "refuted" | "escalated";
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "TaskEvent".
- */
-export type TaskEvent =
-  | {
-      type: "den";
-      ts: number;
-      event: AgentEvent;
-    }
-  | {
-      type: "turn.start";
-      ts: number;
-      turn: number;
-    }
-  | {
-      type: "turn.end";
-      ts: number;
-      turn: number;
-      usage: TaskUsage;
-      harnessSessionId?: SessionId | null;
-    }
-  | {
-      type: "session.spawned";
-      ts: number;
-      nativeSessionId: string;
-      model?: string | null;
-    }
-  | {
-      type: "cost";
-      ts: number;
-      deltaUsd: number;
-      totalUsd: number;
-    }
-  | {
-      type: "log";
-      ts: number;
-      level: LogLevel;
-      message: string;
-    }
-  | {
-      type: "approval-request";
-      ts: number;
-      taskId: string;
-      requestId: string;
-      name: string;
-      input: {
-        [k: string]: unknown;
-      };
-      toolCallId?: string | null;
-    }
-  | {
-      type: "approval-resolved";
-      ts: number;
-      taskId: string;
-      requestId: string;
-      decision: TaskPermissionOutcome;
-    };
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "LogLevel".
  */
 export type LogLevel = "debug" | "info" | "warn" | "error";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginId".
+ */
+export type PluginId = string;
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ToolName".
+ */
+export type ToolName = string;
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "RouteName".
+ */
+export type RouteName = string;
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "Permission".
+ */
+export type Permission =
+  | "memory.read"
+  | "memory.write"
+  | "sessions.read"
+  | "sessions.control"
+  | "topics.read"
+  | "topics.write"
+  | "tasks.read"
+  | "tasks.delegate"
+  | "agents.read"
+  | "notifications.send"
+  | "host.files.read"
+  | "host.files.write"
+  | "host.network"
+  | "host.exec";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewInput".
+ */
+export type ViewInput =
+  | {
+      type: "text";
+      multiline?: boolean;
+    }
+  | {
+      type: "secret";
+    }
+  | {
+      type: "number";
+      min?: number | null;
+      max?: number | null;
+      step?: number | null;
+    }
+  | {
+      type: "toggle";
+    }
+  | {
+      type: "select";
+      options: ViewOption[];
+      multiple?: boolean;
+    }
+  | {
+      type: "file";
+      multiple?: boolean;
+      accept?: string[];
+    };
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewValue".
+ */
+export type ViewValue = boolean | number | string | string[] | ViewFile[];
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginToolHint".
+ */
+export type PluginToolHint = "readOnly" | "destructive" | "idempotent" | "openWorld";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewAction".
+ */
+export type ViewAction =
+  | {
+      type: "call";
+      action: RouteName;
+      params?: {
+        [k: string]: unknown;
+      } | null;
+    }
+  | {
+      type: "navigate";
+      view: RouteName;
+      params?: {
+        [k: string]: unknown;
+      } | null;
+      replace?: boolean;
+    }
+  | {
+      type: "dialog";
+      view: RouteName;
+      params?: {
+        [k: string]: unknown;
+      } | null;
+    }
+  | {
+      type: "back";
+    }
+  | {
+      type: "refresh";
+    }
+  | {
+      type: "toast";
+      text: string;
+      tone?: ViewTone | null;
+    }
+  | {
+      type: "copy";
+      text: string;
+    }
+  | {
+      type: "openSession";
+      sessionId: SessionId;
+    }
+  | {
+      type: "openTopic";
+      topicId: string;
+    }
+  | {
+      type: "openUrl";
+      url: string;
+    }
+  | {
+      type: "download";
+      path: string;
+      filename?: string | null;
+    };
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewTone".
+ */
+export type ViewTone = "neutral" | "info" | "success" | "warning" | "danger";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginEventKind".
+ */
+export type PluginEventKind =
+  "session.started" | "session.idle" | "session.ended" | "session.placed" | "summary.written" | "task.done";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewButtonStyle".
+ */
+export type ViewButtonStyle = "primary" | "secondary" | "danger";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewBlock".
+ */
+export type ViewBlock =
+  | {
+      type: "section";
+      title?: string | null;
+      subtitle?: string | null;
+      actions?: ViewButton[];
+      blocks: ViewBlock[];
+      collapsed?: boolean | null;
+    }
+  | {
+      type: "split";
+      primary: ViewBlock[];
+      secondary: ViewBlock[];
+      ratio?: number | null;
+    }
+  | {
+      type: "tabs";
+      tabs: ViewTab[];
+      selected?: RouteName | null;
+    }
+  | {
+      type: "text";
+      text: string;
+      tone?: ViewTone | null;
+      monospace?: boolean;
+    }
+  | {
+      type: "markdown";
+      text: string;
+    }
+  | {
+      type: "code";
+      text: string;
+      language?: string | null;
+      follow?: boolean;
+    }
+  | {
+      type: "image";
+      path: string;
+      alt: string;
+    }
+  | {
+      type: "properties";
+      items: ViewProperty[];
+    }
+  | {
+      type: "progress";
+      value?: number | null;
+      label?: string | null;
+    }
+  | {
+      type: "notice";
+      tone: ViewTone;
+      title?: string | null;
+      text: string;
+      actions?: ViewButton[];
+    }
+  | {
+      type: "list";
+      items: ViewListItem[];
+      empty?: ViewEmpty | null;
+    }
+  | {
+      type: "table";
+      columns: ViewColumn[];
+      rows: ViewRow[];
+      empty?: ViewEmpty | null;
+    }
+  | {
+      type: "breadcrumbs";
+      items: ViewCrumb[];
+    }
+  | {
+      type: "actions";
+      buttons: ViewButton[];
+    }
+  | {
+      type: "form";
+      id: RouteName;
+      fields: ViewField[];
+      buttons: ViewButton[];
+    }
+  | {
+      type: "canvas";
+      id: RouteName;
+      scene: CanvasScene;
+      height?: number | null;
+      readOnly?: boolean;
+      menu?: CanvasMenuItem[];
+    }
+  | {
+      type: "webPanel";
+      id: RouteName;
+      entry: string;
+      height?: number | null;
+      params?: {
+        [k: string]: unknown;
+      } | null;
+    };
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewInline".
+ */
+export type ViewInline =
+  | {
+      type: "text";
+      text: string;
+      tone?: ViewTone | null;
+      icon?: string | null;
+      monospace?: boolean;
+    }
+  | {
+      type: "badge";
+      text: string;
+      tone: ViewTone;
+    }
+  | {
+      type: "time";
+      at: number;
+      style?: ViewTimeStyle | null;
+    }
+  | {
+      type: "duration";
+      ms: number;
+    }
+  | {
+      type: "bytes";
+      value: number;
+    };
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewTimeStyle".
+ */
+export type ViewTimeStyle = "relative" | "absolute";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewAlign".
+ */
+export type ViewAlign = "start" | "center" | "end";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "CanvasItem".
+ */
+export type CanvasItem =
+  | {
+      type: "node";
+      id: string;
+      x: number;
+      y: number;
+      width: number;
+      height: number;
+      shapes: CanvasShape[];
+      anchors?: CanvasAnchor[];
+      tooltip?: string | null;
+      menu?: CanvasMenuItem[];
+      locked?: boolean;
+      decorative?: boolean;
+    }
+  | {
+      type: "connector";
+      id: string;
+      from: CanvasEnd;
+      to: CanvasEnd;
+      route: CanvasRoute;
+      stroke?: ColorRole | null;
+      strokeWidth?: number | null;
+      dashed?: boolean;
+      arrow: CanvasArrow;
+      label?: string | null;
+      tooltip?: string | null;
+      menu?: CanvasMenuItem[];
+      decorative?: boolean;
+    };
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "CanvasShape".
+ */
+export type CanvasShape =
+  | {
+      type: "rect";
+      x: number;
+      y: number;
+      width: number;
+      height: number;
+      radius?: number | null;
+      fill?: ColorRole | null;
+      stroke?: ColorRole | null;
+      strokeWidth?: number | null;
+    }
+  | {
+      type: "ellipse";
+      x: number;
+      y: number;
+      width: number;
+      height: number;
+      fill?: ColorRole | null;
+      stroke?: ColorRole | null;
+      strokeWidth?: number | null;
+    }
+  | {
+      type: "text";
+      x: number;
+      y: number;
+      text: string;
+      size?: number | null;
+      weight?: CanvasWeight | null;
+      color?: ColorRole | null;
+      align?: ViewAlign | null;
+      maxWidth?: number | null;
+      monospace?: boolean;
+    }
+  | {
+      type: "path";
+      d: string;
+      fill?: ColorRole | null;
+      stroke?: ColorRole | null;
+      strokeWidth?: number | null;
+      dashed?: boolean;
+    }
+  | {
+      type: "icon";
+      x: number;
+      y: number;
+      name: string;
+      size?: number | null;
+      color?: ColorRole | null;
+    };
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ColorRole".
+ */
+export type ColorRole =
+  | "surface"
+  | "surfaceContainer"
+  | "surfaceContainerHigh"
+  | "primary"
+  | "primaryContainer"
+  | "onPrimary"
+  | "onPrimaryContainer"
+  | "secondaryContainer"
+  | "onSurface"
+  | "onSurfaceVariant"
+  | "outline"
+  | "outlineVariant"
+  | "info"
+  | "success"
+  | "warning"
+  | "danger"
+  | "category1"
+  | "category2"
+  | "category3"
+  | "category4"
+  | "category5"
+  | "category6";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "CanvasWeight".
+ */
+export type CanvasWeight = "regular" | "medium" | "bold";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "CanvasSide".
+ */
+export type CanvasSide = "top" | "right" | "bottom" | "left";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "CanvasDirection".
+ */
+export type CanvasDirection = "in" | "out" | "both";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "CanvasRoute".
+ */
+export type CanvasRoute = "straight" | "curved" | "orthogonal";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "CanvasArrow".
+ */
+export type CanvasArrow = "none" | "end" | "start" | "both";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "CanvasEvent".
+ */
+export type CanvasEvent =
+  | {
+      type: "selected";
+      items: string[];
+    }
+  | {
+      type: "moved";
+      items: CanvasPosition[];
+    }
+  | {
+      type: "connected";
+      from: CanvasEnd;
+      to: CanvasEnd;
+    }
+  | {
+      type: "deleted";
+      items: string[];
+    }
+  | {
+      type: "activated";
+      item: string;
+    }
+  | {
+      type: "menu";
+      item?: string | null;
+      choice: string;
+      x: number;
+      y: number;
+    };
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "CanvasOp".
+ */
+export type CanvasOp =
+  | {
+      type: "upsert";
+      item: CanvasItem;
+    }
+  | {
+      type: "remove";
+      ids: string[];
+    };
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PanelScheme".
+ */
+export type PanelScheme = "light" | "dark";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PanelHostMessage".
+ */
+export type PanelHostMessage =
+  | {
+      type: "init";
+      theme: PanelTheme;
+      params?: {
+        [k: string]: unknown;
+      } | null;
+      context: ViewContext1;
+      plugin: PluginId;
+      node: string;
+    }
+  | {
+      type: "theme";
+      theme: PanelTheme;
+    };
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PanelMessage".
+ */
+export type PanelMessage =
+  | {
+      type: "ready";
+    }
+  | {
+      type: "resize";
+      height: number;
+    }
+  | {
+      type: "action";
+      action: ViewAction;
+    };
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginState".
+ */
+export type PluginState = "disabled" | "awaitingApproval" | "starting" | "running" | "backoff" | "invalid";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginJobTrigger".
+ */
+export type PluginJobTrigger = "schedule" | "manual";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginJobOutcome".
+ */
+export type PluginJobOutcome = "succeeded" | "failed";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginLogStream".
+ */
+export type PluginLogStream = "stdout" | "stderr" | "host";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginEvent".
+ */
+export type PluginEvent =
+  | {
+      type: "session.started";
+      sessionId: SessionId;
+      topicId?: string | null;
+    }
+  | {
+      type: "session.idle";
+      sessionId: SessionId;
+    }
+  | {
+      type: "session.ended";
+      sessionId: SessionId;
+    }
+  | {
+      type: "session.placed";
+      sessionId: SessionId;
+      topicId: string;
+      by: PlacedBy;
+    }
+  | {
+      type: "summary.written";
+      summaryId: string;
+      sessionId?: SessionId | null;
+      kind: SummaryKind;
+      level: number;
+    }
+  | {
+      type: "task.done";
+      taskId: string;
+      status: TaskStatus;
+    }
+  | {
+      type: "settings.changed";
+      values: {
+        [k: string]: ViewValue;
+      };
+    };
 
 export interface RivetHubContractAcceptedByTheRuntime {
   [k: string]: unknown;
@@ -1257,6 +1905,82 @@ export interface AgentResponse {
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "HubProjectDefaults".
+ */
+export interface HubProjectDefaults {
+  agentId?: string | null;
+  model?: string | null;
+  effort?: ThinkingLevel | null;
+  harnessId?: HarnessId | null;
+  node?: string | null;
+  directory?: string | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "HubProject".
+ */
+export interface HubProject {
+  id: string;
+  name: string;
+  order?: number;
+  createdAt?: number;
+  defaults?: HubProjectDefaults | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "HubLastSession".
+ */
+export interface HubLastSession {
+  key: string;
+  at: number;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "HubState".
+ */
+export interface HubState {
+  projects?: HubProject[];
+  defaultProjectId?: string | null;
+  membership?: {
+    [k: string]: string;
+  };
+  names?: {
+    [k: string]: string;
+  };
+  archived?: string[];
+  pinned?: string[];
+  hidden?: string[];
+  modes?: {
+    [k: string]: HubSessionMode;
+  };
+  lastSession?: HubLastSession | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "HubStateResponse".
+ */
+export interface HubStateResponse {
+  version: number;
+  state: HubState;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "HubStatePutRequest".
+ */
+export interface HubStatePutRequest {
+  baseVersion: number;
+  state: HubState;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "hub.state".
+ */
+export interface HubState1 {
+  v: ProtocolVersion;
+  version: number;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "HarnessDescriptor".
  */
 export interface HarnessDescriptor {
@@ -1316,6 +2040,7 @@ export interface Preset {
   local: boolean;
   harnessId?: HarnessId | null;
   model?: string | null;
+  effort?: string | null;
   directory?: string | null;
   implemented?: boolean | null;
   gap?: string | null;
@@ -1333,107 +2058,10 @@ export interface CatalogNode {
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "CatalogCommand".
- */
-export interface CatalogCommand {
-  name: string;
-  description: string;
-  argHint?: string | null;
-  source: string;
-}
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "CatalogExecutorEntry".
- */
-export interface CatalogExecutorEntry {
-  key: string;
-  capabilities: HarnessExecutorCapabilities;
-  commands: CatalogCommand[];
-  harnessId?: HarnessId | null;
-  implemented?: boolean | null;
-}
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "HarnessExecutorCapabilities".
- */
-export interface HarnessExecutorCapabilities {
-  steerable: boolean;
-  multiTurn: boolean;
-  structuredStream: boolean;
-  usageInResult: boolean;
-  sessionIdCapture: boolean;
-  slashCommands: boolean;
-  effortSelection: boolean;
-  mcpInjection: McpInjection;
-}
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "CatalogSkillEntry".
- */
-export interface CatalogSkillEntry {
-  name: string;
-  description: string;
-}
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "CatalogSheet".
- */
-export interface CatalogSheet {
-  node: string;
-  agents: CatalogAgent[];
-  executors: CatalogExecutorEntry[];
-  tools: string[];
-  skills: CatalogSkillEntry[];
-}
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "CatalogAgentsResponse".
  */
 export interface CatalogAgentsResponse {
   agents: CatalogAgent[];
-}
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "OutcomeBucket".
- */
-export interface OutcomeBucket {
-  tasks: number;
-  completed: number;
-  failed: number;
-  verified: number;
-  refuted: number;
-  escalated: number;
-  diverged: number;
-  divergenceRate: number;
-  totalCostUsd?: number | null;
-  avgDurationMs?: number | null;
-}
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "OutcomesFilter".
- */
-export interface OutcomesFilter {
-  since?: string | null;
-  until?: string | null;
-  agentId?: string | null;
-  origin?: string | null;
-}
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "OutcomesResponse".
- */
-export interface OutcomesResponse {
-  filter: OutcomesFilter;
-  totals: OutcomeBucket;
-  byAgent: {
-    [k: string]: OutcomeBucket;
-  };
-  byExecutor: {
-    [k: string]: OutcomeBucket;
-  };
-  byDay: {
-    [k: string]: OutcomeBucket;
-  };
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -1454,6 +2082,8 @@ export interface MeshOverviewNode {
   online: boolean;
   sessions?: number | null;
   latest?: MeshLatest | null;
+  version?: string | null;
+  revision?: string | null;
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -1809,6 +2439,8 @@ export interface MemorySearchToolArgs {
   scope?: MemoryScope | null;
   limit?: number | null;
   agent?: string | null;
+  role?: Role | null;
+  tool_name?: string | null;
   tag?: string | null;
 }
 /**
@@ -2056,6 +2688,47 @@ export interface MemoryBrowseMessage {
  */
 export interface MemoryBrowseResponse {
   messages: MemoryBrowseMessage[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "MemorySummaryNode".
+ */
+export interface MemorySummaryNode {
+  id: string;
+  parentId?: string | null;
+  level: number;
+  kind: SummaryKind;
+  content: string;
+  messageCount: number;
+  earliestAt?: string | null;
+  latestAt?: string | null;
+  createdAt: string;
+  sourceMessageIds: string[];
+  vector: VectorState;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "MemoryMessageTally".
+ */
+export interface MemoryMessageTally {
+  total: number;
+  user: number;
+  assistant: number;
+  system: number;
+  tool: number;
+  embedded: number;
+  pending: number;
+  failed: number;
+  skipped: number;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "MemorySummaryDagResponse".
+ */
+export interface MemorySummaryDagResponse {
+  sessionId: string;
+  summaries: MemorySummaryNode[];
+  messages: MemoryMessageTally;
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -2371,6 +3044,8 @@ export interface HealthzResponse {
   node: string;
   degraded?: string | null;
   degradedProviders?: DegradedProvider[];
+  version?: string | null;
+  revision?: string | null;
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -2444,6 +3119,60 @@ export interface RosterEntry {
   env?: {
     [k: string]: string;
   };
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "SessionDeleted".
+ */
+export interface SessionDeleted {
+  ok: boolean;
+  session: SessionId;
+  conversations: number;
+  messages: number;
+  summaries: number;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "SessionDeleteRequest".
+ */
+export interface SessionDeleteRequest {
+  sessions: SessionId[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "SessionDeleteRefused".
+ */
+export interface SessionDeleteRefused {
+  session: SessionId;
+  ok: boolean;
+  error: SessionDeleteError;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "SessionDeleteResults".
+ */
+export interface SessionDeleteResults {
+  results: SessionDeleteResult[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "SessionTrashCandidate".
+ */
+export interface SessionTrashCandidate {
+  session: SessionId;
+  harness: HarnessId;
+  title?: string | null;
+  updatedAt: string;
+  reason: SessionTrashReason;
+  userTurns: number;
+  reply?: string | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "SessionTrashList".
+ */
+export interface SessionTrashList {
+  candidates: SessionTrashCandidate[];
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -2525,6 +3254,10 @@ export interface SessionPostRequest {
   agent?: string | null;
   thinking?: ThinkingLevel | null;
   systemPrompt?: string | null;
+  attachments?: UserTurnAttachment[] | null;
+  harness?: HarnessId | null;
+  model?: string | null;
+  workingDir?: string | null;
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -2540,6 +3273,21 @@ export interface SessionPostAccepted {
  */
 export interface SessionPostReply {
   message: SessionMessage;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "SessionSteerRequest".
+ */
+export interface SessionSteerRequest {
+  text: string;
+  attachments?: UserTurnAttachment[] | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "SessionSteerResponse".
+ */
+export interface SessionSteerResponse {
+  outcome: SteerOutcome;
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -2576,8 +3324,11 @@ export interface HarnessTranscriptTurn {
   model?: string | null;
   stopReason?: string | null;
   lastBlock?: TranscriptBlock | null;
+  attachments?: TranscriptAttachment[] | null;
   complete?: boolean;
   compact?: boolean;
+  startedAtMs?: number | null;
+  endedAtMs?: number | null;
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -2594,6 +3345,16 @@ export interface HarnessTranscriptTool {
     [k: string]: unknown;
   } | null;
   resultText?: string | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TranscriptAttachment".
+ */
+export interface TranscriptAttachment {
+  mediaType: string;
+  name?: string | null;
+  uri?: string | null;
+  uploadId?: string | null;
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -2620,6 +3381,23 @@ export interface HarnessSessionTranscriptResponse {
   compactAt: number;
   contextSource: ContextSource;
   redirectedTo?: SessionId | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "SessionPreview".
+ */
+export interface SessionPreview {
+  sessionId: SessionId;
+  kind: SessionPreviewKind;
+  text: string;
+  at: number;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "SessionPreviewList".
+ */
+export interface SessionPreviewList {
+  previews: SessionPreview[];
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -2651,8 +3429,61 @@ export interface HarnessSessionResponse {
   taskId?: string | null;
   effort?: string | null;
   transport?: Transport | null;
+  startupContext?: StartupContext | null;
   redirectedTo?: SessionId | null;
+  switches?: SessionSwitches | null;
   [k: string]: unknown;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "StartupContext".
+ */
+export interface StartupContext {
+  topicId: string;
+  sections: StartupSection[];
+  tokens: number;
+  deliveredVia: DeliveredVia;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "StartupSection".
+ */
+export interface StartupSection {
+  kind: StartupKind;
+  title: string;
+  text: string;
+  sources: StartupSource[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "SessionSwitches".
+ */
+export interface SessionSwitches {
+  model: boolean;
+  effort: boolean;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "HarnessSessionTitleRequest".
+ */
+export interface HarnessSessionTitleRequest {
+  title: string;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "HarnessSessionForkRequest".
+ */
+export interface HarnessSessionForkRequest {
+  prompts: number;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "HarnessToolOutput".
+ */
+export interface HarnessToolOutput {
+  text: string;
+  isError: boolean;
+  truncated: boolean;
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -2668,6 +3499,7 @@ export interface TermSpawnRequest {
   force?: boolean | null;
   cols?: number | null;
   rows?: number | null;
+  topicId?: string | null;
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -2778,6 +3610,7 @@ export interface DeviceOwner {
  */
 export interface UploadCreated {
   id: string;
+  uri: string;
   name: string;
   bytes: number;
   mediaType: string;
@@ -3028,6 +3861,11 @@ export interface WikiCitation {
   date?: Millis | null;
   kind?: string | null;
   note?: string | null;
+  conversationId?: string | null;
+  sessionId?: SessionId | null;
+  title?: string | null;
+  channel?: string | null;
+  topicId?: string | null;
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -3068,6 +3906,7 @@ export interface WikiPageResponse {
   lastVerified?: Millis | null;
   updatedAt: Millis;
   related?: string[] | null;
+  topicId?: string | null;
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -3099,7 +3938,7 @@ export interface WikiRedLink {
  */
 export interface WikiGapsResponse {
   redLinks: WikiRedLink[];
-  stalest: string[];
+  stalest: WikiTopic[];
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -3112,6 +3951,7 @@ export interface WikiTopic {
   entities: string[];
   updatedAt: Millis;
   excerpt: string;
+  topicId?: string | null;
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -3123,12 +3963,414 @@ export interface WikiTopicList {
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TidySample".
+ */
+export interface TidySample {
+  id: string;
+  title?: string | null;
+  lastActive?: number | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TidyEvidence".
+ */
+export interface TidyEvidence {
+  sessions: number;
+  samples?: TidySample[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TidyProposal".
+ */
+export interface TidyProposal {
+  id: string;
+  batchId: string;
+  change: TidyChange;
+  reason: string;
+  evidence: TidyEvidence;
+  proposedBy: Proposer;
+  proposedAt: number;
+  state: ProposalState;
+  decidedAt?: number | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TidyBatch".
+ */
+export interface TidyBatch {
+  batchId: string;
+  proposedBy: Proposer;
+  proposedAt: number;
+  proposals: TidyProposal[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TidyPending".
+ */
+export interface TidyPending {
+  batches: TidyBatch[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TidyFailure".
+ */
+export interface TidyFailure {
+  proposalId: string;
+  error: string;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TidyBatchDecision".
+ */
+export interface TidyBatchDecision {
+  decided: TidyProposal[];
+  failed?: TidyFailure[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "FilingUpkeep".
+ */
+export interface FilingUpkeep {
+  categorizer: number;
+  you: number;
+  uncategorized: number;
+  leftOut: number;
+  correctionsLastWeek: number;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "EntityTypeCount".
+ */
+export interface EntityTypeCount {
+  typeId: string;
+  name: string;
+  entities: number;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "WikiUpkeep".
+ */
+export interface WikiUpkeep {
+  topicPages: number;
+  entityTypes: EntityTypeCount[];
+  loosePages: number;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "WorkerActivity".
+ */
+export interface WorkerActivity {
+  lastFinishedAt?: number | null;
+  failing: number;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "WorkerUpkeep".
+ */
+export interface WorkerUpkeep {
+  embedder: WorkerActivity;
+  summarizer: WorkerActivity;
+  categorizer: WorkerActivity;
+  wikiBuilder: WorkerActivity;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "MemoryUpkeep".
+ */
+export interface MemoryUpkeep {
+  filing: FilingUpkeep;
+  wiki: WikiUpkeep;
+  workers: WorkerUpkeep;
+  pendingProposals: number;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TopicRecord".
+ */
+export interface TopicRecord {
+  id: string;
+  kind?: "work" | "type" | "entity";
+  slug: string;
+  name: string;
+  aliases: string[];
+  parent?: string | null;
+  directory?: TopicDirectory | null;
+  createdAt: number;
+  updatedAt: number;
+  closedAt?: number | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TopicSummary".
+ */
+export interface TopicSummary {
+  id: string;
+  kind?: "work" | "type" | "entity";
+  slug: string;
+  name: string;
+  aliases: string[];
+  parent?: string | null;
+  directory?: TopicDirectory | null;
+  createdAt: number;
+  updatedAt: number;
+  closedAt?: number | null;
+  sessionCount: number;
+  lastActive?: number | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TopicList".
+ */
+export interface TopicList {
+  topics: TopicSummary[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TopicCreateRequest".
+ */
+export interface TopicCreateRequest {
+  kind?: "work" | "type" | "entity";
+  name: string;
+  aliases?: string[];
+  parent?: string | null;
+  directory?: TopicDirectory | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "WikiPageEdit".
+ */
+export interface WikiPageEdit {
+  currentState?: string | null;
+  article?: string | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TopicUpdate".
+ */
+export interface TopicUpdate {
+  name?: string | null;
+  aliases?: string[] | null;
+  parent?: string | null;
+  directory?: TopicDirectory | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TopicMergeRequest".
+ */
+export interface TopicMergeRequest {
+  into: string;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TopicPlacement".
+ */
+export interface TopicPlacement {
+  sessionId: SessionId;
+  topicId: string;
+  by: PlacedBy;
+  at: number;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TopicSuggestion".
+ */
+export interface TopicSuggestion {
+  name: string;
+  topicId?: string | null;
+  parentId?: string | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PlacementReply".
+ */
+export interface PlacementReply {
+  placement?: TopicPlacement | null;
+  suggestion?: TopicSuggestion | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PlacementRequest".
+ */
+export interface PlacementRequest {
+  topicId: string;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "SessionHistoryMark".
+ */
+export interface SessionHistoryMark {
+  sessionId: SessionId;
+  markedAt: number;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "SessionHistoryList".
+ */
+export interface SessionHistoryList {
+  sessions: SessionHistoryMark[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TopicSession".
+ */
+export interface TopicSession {
+  sessionId: SessionId;
+  topicId: string;
+  by: PlacedBy;
+  at: number;
+  title?: string | null;
+  lastActive?: number | null;
+  node?: string | null;
+  parentSessionId?: SessionId | null;
+  taskId?: string | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TopicSessionList".
+ */
+export interface TopicSessionList {
+  sessions: TopicSession[];
+  conversations?: TopicConversation[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TopicConversation".
+ */
+export interface TopicConversation {
+  conversationId: string;
+  topicId: string;
+  by: PlacedBy;
+  at: number;
+  channel: string;
+  title?: string | null;
+  lastActive?: number | null;
+  node?: string | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TopicFiling".
+ */
+export interface TopicFiling {
+  sessions: TopicSession[];
+  conversations: TopicConversation[];
+  history: SessionHistoryMark[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "SessionSuggestion".
+ */
+export interface SessionSuggestion {
+  sessionId: SessionId;
+  name: string;
+  topicId?: string | null;
+  parentId?: string | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "SessionSuggestionList".
+ */
+export interface SessionSuggestionList {
+  sessions: SessionSuggestion[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ConversationPlacement".
+ */
+export interface ConversationPlacement {
+  conversationId: string;
+  topicId: string;
+  by: PlacedBy;
+  at: number;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ConversationPlacementReply".
+ */
+export interface ConversationPlacementReply {
+  placement?: ConversationPlacement | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TopicPage".
+ */
+export interface TopicPage {
+  topic: TopicRecord;
+  page?: WikiPageResponse | null;
+  mentions?: TopicMention[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TopicMention".
+ */
+export interface TopicMention {
+  topicId: string;
+  name: string;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TopicDecision".
+ */
+export interface TopicDecision {
+  id: string;
+  topicId: string;
+  text: string;
+  status: DecisionStatus;
+  supersededBy?: string | null;
+  by: string;
+  sessionId?: SessionId | null;
+  createdAt: number;
+  updatedAt: number;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "TopicDecisionList".
+ */
+export interface TopicDecisionList {
+  decisions: TopicDecision[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "DecisionCreateRequest".
+ */
+export interface DecisionCreateRequest {
+  text: string;
+  sessionId?: SessionId | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "DecisionUpdate".
+ */
+export interface DecisionUpdate {
+  text: string;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "DecisionSupersedeRequest".
+ */
+export interface DecisionSupersedeRequest {
+  text?: string | null;
+  sessionId?: SessionId | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "DecisionSuperseded".
+ */
+export interface DecisionSuperseded {
+  superseded: TopicDecision;
+  replacement?: TopicDecision | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "AgentUsage".
  */
 export interface AgentUsage {
   promptTokens: number;
   completionTokens: number;
   cachedTokens: number;
+}
+export interface AgentEvent1 {
+  v: ProtocolVersion;
+  session: string;
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -3200,6 +4442,13 @@ export interface Snapshot {
 export interface SessionRemoved {
   v: ProtocolVersion;
   session: string;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "SessionBroadcast".
+ */
+export interface SessionBroadcast {
+  [k: string]: unknown;
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -3371,7 +4620,28 @@ export interface HarnessSessionSummary {
   taskId?: string | null;
   effort?: string | null;
   transport?: Transport | null;
+  startupContext?: StartupContext | null;
   [k: string]: unknown;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PlanEntry".
+ */
+export interface PlanEntry {
+  content: string;
+  status: PlanStatus;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "LlmUsage".
+ */
+export interface LlmUsage {
+  promptTokens: number;
+  completionTokens: number;
+  reasoningTokens?: number | null;
+  cachedTokens?: number | null;
+  cacheCreationTokens?: number | null;
+  cacheReadTokens?: number | null;
 }
 export interface HarnessStatusFrame {
   type: "status";
@@ -3440,6 +4710,7 @@ export interface HarnessCapabilities {
   interrupt: boolean;
   resume: boolean;
   approvals: boolean;
+  steering?: boolean | null;
   liveStream: boolean;
   listSessions: boolean;
   drive?: boolean | null;
@@ -3480,6 +4751,7 @@ export interface HarnessControlCapabilities {
   interrupt: boolean;
   resume: boolean;
   approvals: boolean;
+  steering?: boolean | null;
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -3489,6 +4761,18 @@ export interface HarnessObservationCapabilities {
   liveStream: boolean;
   listSessions: boolean;
   drive?: boolean | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "HarnessSessionCreateRequest".
+ */
+export interface HarnessSessionCreateRequest {
+  harness?: HarnessId | null;
+  model?: string | null;
+  cwd?: string | null;
+  agentId?: string | null;
+  topicId?: string | null;
+  prompt?: string | null;
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -3536,12 +4820,14 @@ export interface HarnessStoreSessionList {
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "ContextRef".
+ * via the `definition` "task.done".
  */
-export interface ContextRef {
-  kind: ContextRefKind;
-  ref: string;
-  note?: string | null;
+export interface TaskDone {
+  taskId: string;
+  status: TaskStatus;
+  parentSessionId?: string | null;
+  childSessionId?: string | null;
+  ts: number;
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -3558,8 +4844,6 @@ export interface AcceptanceCriterion {
  * via the `definition` "TaskBudget".
  */
 export interface TaskBudget {
-  maxUsd?: number | null;
-  maxTokens?: number | null;
   maxTurns?: number | null;
   maxWallClockMs?: number | null;
 }
@@ -3568,76 +4852,11 @@ export interface TaskBudget {
  * via the `definition` "TaskUsage".
  */
 export interface TaskUsage {
-  inputTokens: number;
-  outputTokens: number;
-  totalTokens: number;
-  costUsd?: number | null;
+  inputTokens?: number | null;
+  outputTokens?: number | null;
+  totalTokens?: number | null;
   turns: number;
   wallClockMs: number;
-}
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "TaskSpec".
- */
-export interface TaskSpec {
-  delegation?: boolean | null;
-  meshFrom?: string | null;
-  taskId: string;
-  agentId: string;
-  goal: string;
-  resolvedContext: ContextRef[];
-  acceptanceCriteria: AcceptanceCriterion[];
-  budget?: TaskBudget1;
-  tools?: string[] | null;
-  workingDir?: string | null;
-  model?: string | null;
-  effort?: Effort | null;
-  systemPromptAppend?: string | null;
-  isolation?: TaskIsolation | null;
-  promptMode?: TaskPromptMode | null;
-  excludeTools?: string[] | null;
-  resumeMessage?: string | null;
-  session: string;
-  permissionDecisions?: TaskPermissionDecision[] | null;
-  presetId?: string | null;
-  presetName?: string | null;
-  auditOnly?: boolean | null;
-  [k: string]: unknown;
-}
-export interface TaskBudget1 {
-  maxUsd?: number | null;
-  maxTokens?: number | null;
-  maxTurns?: number | null;
-  maxWallClockMs?: number | null;
-}
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "TaskPermissionDecision".
- */
-export interface TaskPermissionDecision {
-  requestId: string;
-  tool: string;
-  decision: TaskPermissionOutcome;
-  at: number;
-  message?: string | null;
-}
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "TaskArtifact".
- */
-export interface TaskArtifact {
-  kind: ArtifactKind;
-  ref: string;
-  note?: string | null;
-}
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "CriterionReport".
- */
-export interface CriterionReport {
-  id: string;
-  met: boolean;
-  evidence?: string;
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -3646,61 +4865,8 @@ export interface CriterionReport {
 export interface TaskResult {
   verdict: TaskVerdict;
   summary: string;
-  output?: string | null;
-  artifacts: TaskArtifact[];
-  criteriaSelfReport?: CriterionReport[] | null;
   usage: TaskUsage;
   error?: string | null;
-}
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "EvalOutcome".
- */
-export interface EvalOutcome {
-  verdict: EvalVerdict;
-  attempts: number;
-  verifierTaskIds: string[];
-  criteriaReport: CriterionReport[];
-  diverged: boolean;
-  escalatedAt?: string | null;
-}
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "ExecutorTurnCapabilities".
- */
-export interface ExecutorTurnCapabilities {
-  steerable: boolean;
-  multiTurn: boolean;
-  structuredStream: boolean;
-}
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "ExecutorResultCapabilities".
- */
-export interface ExecutorResultCapabilities {
-  usageInResult: boolean;
-  sessionIdCapture: boolean;
-}
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "ExecutorInteractionCapabilities".
- */
-export interface ExecutorInteractionCapabilities {
-  slashCommands: boolean;
-  effortSelection: boolean;
-}
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "TaskApprovalRequest".
- */
-export interface TaskApprovalRequest {
-  taskId: string;
-  requestId: string;
-  name: string;
-  input: {
-    [k: string]: unknown;
-  };
-  toolCallId?: string | null;
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -3709,55 +4875,43 @@ export interface TaskApprovalRequest {
 export interface TaskWire {
   id: string;
   goal: string;
-  contextRefs: ContextRef[];
   acceptanceCriteria: AcceptanceCriterion[];
-  spec: TaskSpec;
-  executor: TaskExecutorKind;
-  executorTarget?: string | null;
   agentId: string;
+  node: string;
+  harness?: HarnessId | null;
+  model?: string | null;
+  effort?: string | null;
   requestedBy?: string | null;
-  origin: string;
+  parentSessionId?: string | null;
   parentTaskId?: string | null;
-  chainDepth: number;
-  nodeAffinity?: string | null;
-  claimedBy?: string | null;
+  depth: number;
+  childSessionId?: string | null;
   budget: TaskBudget;
   usage?: TaskUsage | null;
   status: TaskStatus;
-  attempt: number;
-  maxAttempts: number;
-  pendingMessage?: string | null;
   error?: string | null;
   result?: TaskResult | null;
-  conversationId?: string | null;
-  sessionKey?: string | null;
-  harnessSessionIds: string[];
-  eval?: EvalOutcome | null;
-  evalAttempt: number;
   createdAt: number;
   startedAt?: number | null;
-  lastHeartbeatAt?: number | null;
   completedAt?: number | null;
   durationMs?: number | null;
-  pendingApprovals?: TaskApprovalRequest[] | null;
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "TaskCreateRequest".
  */
 export interface TaskCreateRequest {
-  goal: string;
-  agentId: string;
-  executor?: TaskExecutorKind | null;
-  executorTarget?: string | null;
-  requestedBy?: string | null;
-  parentTaskId?: string | null;
-  chainDepth?: number | null;
+  goal?: string | null;
+  agentId?: string | null;
   nodeAffinity?: string | null;
-  spec?: TaskSpec | null;
-  budget?: TaskBudget | null;
-  contextRefs?: ContextRef[] | null;
   acceptanceCriteria?: AcceptanceCriterion[] | null;
+  budget?: TaskBudget | null;
+  parentSessionId?: string | null;
+  model?: string | null;
+  effort?: ThinkingLevel | null;
+  workingDir?: string | null;
+  requestedBy?: string | null;
+  [k: string]: unknown;
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -3775,13 +4929,6 @@ export interface TasksListResponse {
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "TaskSteerAccepted".
- */
-export interface TaskSteerAccepted {
-  ok: boolean;
-}
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "TaskKillResponse".
  */
 export interface TaskKillResponse {
@@ -3790,46 +4937,11 @@ export interface TaskKillResponse {
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "TaskApprovalAccepted".
- */
-export interface TaskApprovalAccepted {
-  ok: boolean;
-}
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "TaskApprovalWaitResponse".
- */
-export interface TaskApprovalWaitResponse {
-  approval: TaskApprovalRequest;
-}
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "TaskWaitTimeoutResponse".
  */
 export interface TaskWaitTimeoutResponse {
   error: string;
   task?: TaskWire | null;
-}
-/**
- * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
- * via the `definition` "TaskOverrides".
- */
-export interface TaskOverrides {
-  delegation?: boolean | null;
-  meshFrom?: string | null;
-  presetId?: string | null;
-  presetName?: string | null;
-  permissionDecisions?: TaskPermissionDecision[] | null;
-  auditOnly?: boolean | null;
-  workingDir?: string | null;
-  model?: string | null;
-  effort?: Effort | null;
-  systemPromptAppend?: string | null;
-  isolation?: TaskIsolation | null;
-  promptMode?: TaskPromptMode | null;
-  excludeTools?: string[] | null;
-  resumeMessage?: string | null;
-  [k: string]: unknown;
 }
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -3844,4 +4956,636 @@ export interface MemorySearchResult {
   agent?: string | null;
   relevanceScore: number;
   createdAt: string;
+  sessionId?: string | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginManifest".
+ */
+export interface PluginManifest {
+  $schema?: string | null;
+  manifest: ProtocolVersion;
+  id: PluginId;
+  name: string;
+  version: string;
+  description: string;
+  icon?: string | null;
+  run: PluginRun;
+  permissions?: Permission[];
+  settings?: ViewField[];
+  tools?: PluginTool[];
+  contributes?: PluginContributions;
+  jobs?: PluginJob[];
+  events?: PluginEventKind[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginRun".
+ */
+export interface PluginRun {
+  command: string[];
+  env?: {
+    [k: string]: string;
+  };
+  readyTimeoutMs?: number | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewField".
+ */
+export interface ViewField {
+  key: string;
+  label: string;
+  input: ViewInput;
+  value?: ViewValue | null;
+  required?: boolean;
+  help?: string | null;
+  placeholder?: string | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewOption".
+ */
+export interface ViewOption {
+  value: string;
+  label: string;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewFile".
+ */
+export interface ViewFile {
+  name: string;
+  mimeType: string;
+  data: string;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginTool".
+ */
+export interface PluginTool {
+  name: ToolName;
+  title?: string | null;
+  description: string;
+  inputSchema: {
+    [k: string]: unknown;
+  };
+  hints?: PluginToolHint[];
+}
+export interface PluginContributions {
+  pages?: PluginPage[];
+  topicCards?: PluginTopicCard[];
+  sessionActions?: PluginSessionAction[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginPage".
+ */
+export interface PluginPage {
+  id: RouteName;
+  title: string;
+  icon?: string | null;
+  view: RouteName;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginTopicCard".
+ */
+export interface PluginTopicCard {
+  id: RouteName;
+  title: string;
+  view: RouteName;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginSessionAction".
+ */
+export interface PluginSessionAction {
+  id: RouteName;
+  title: string;
+  icon?: string | null;
+  action: ViewAction;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginJob".
+ */
+export interface PluginJob {
+  id: RouteName;
+  title: string;
+  schedule?: string | null;
+  timeoutMs?: number | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginContributions".
+ */
+export interface PluginContributions1 {
+  pages?: PluginPage[];
+  topicCards?: PluginTopicCard[];
+  sessionActions?: PluginSessionAction[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "View".
+ */
+export interface View {
+  title: string;
+  subtitle?: string | null;
+  toolbar?: ViewButton[];
+  blocks: ViewBlock[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewButton".
+ */
+export interface ViewButton {
+  label: string;
+  icon?: string | null;
+  style?: ViewButtonStyle | null;
+  action: ViewAction;
+  confirm?: ViewConfirm | null;
+  disabled?: boolean;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewConfirm".
+ */
+export interface ViewConfirm {
+  title: string;
+  text: string;
+  confirmLabel?: string | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewTab".
+ */
+export interface ViewTab {
+  id: RouteName;
+  title: string;
+  badge?: string | null;
+  blocks: ViewBlock[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewProperty".
+ */
+export interface ViewProperty {
+  label: string;
+  value: ViewInline;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewListItem".
+ */
+export interface ViewListItem {
+  id: string;
+  title: string;
+  subtitle?: string | null;
+  icon?: string | null;
+  trailing?: ViewInline[];
+  action?: ViewAction | null;
+  menu?: ViewButton[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewEmpty".
+ */
+export interface ViewEmpty {
+  title: string;
+  text?: string | null;
+  button?: ViewButton | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewColumn".
+ */
+export interface ViewColumn {
+  title: string;
+  align?: ViewAlign | null;
+  sortable?: boolean;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewRow".
+ */
+export interface ViewRow {
+  id: string;
+  cells: ViewInline[];
+  action?: ViewAction | null;
+  menu?: ViewButton[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewCrumb".
+ */
+export interface ViewCrumb {
+  label: string;
+  action?: ViewAction | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "CanvasScene".
+ */
+export interface CanvasScene {
+  items: CanvasItem[];
+  grid?: CanvasGrid | null;
+  viewport?: CanvasViewport | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "CanvasAnchor".
+ */
+export interface CanvasAnchor {
+  id: string;
+  x: number;
+  y: number;
+  side: CanvasSide;
+  direction: CanvasDirection;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "CanvasMenuItem".
+ */
+export interface CanvasMenuItem {
+  id: string;
+  label: string;
+  icon?: string | null;
+  danger?: boolean;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "CanvasEnd".
+ */
+export interface CanvasEnd {
+  node: string;
+  anchor?: string | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "CanvasGrid".
+ */
+export interface CanvasGrid {
+  size: number;
+  snap?: boolean;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "CanvasViewport".
+ */
+export interface CanvasViewport {
+  x: number;
+  y: number;
+  zoom: number;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewRequest".
+ */
+export interface ViewRequest {
+  params?: {
+    [k: string]: unknown;
+  } | null;
+  context?: ViewContext;
+}
+export interface ViewContext {
+  topicId?: string | null;
+  sessionId?: SessionId | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewContext".
+ */
+export interface ViewContext1 {
+  topicId?: string | null;
+  sessionId?: SessionId | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewActionRequest".
+ */
+export interface ViewActionRequest {
+  params?: {
+    [k: string]: unknown;
+  } | null;
+  values?: {
+    [k: string]: ViewValue;
+  };
+  context?: ViewContext2;
+}
+export interface ViewContext2 {
+  topicId?: string | null;
+  sessionId?: SessionId | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewActionResult".
+ */
+export interface ViewActionResult {
+  actions?: ViewAction[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ViewActionRefusal".
+ */
+export interface ViewActionRefusal {
+  message: string;
+  fields?: {
+    [k: string]: string;
+  };
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "CanvasEventRequest".
+ */
+export interface CanvasEventRequest {
+  event: CanvasEvent;
+  params?: {
+    [k: string]: unknown;
+  } | null;
+  context?: ViewContext3;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "CanvasPosition".
+ */
+export interface CanvasPosition {
+  id: string;
+  x: number;
+  y: number;
+}
+export interface ViewContext3 {
+  topicId?: string | null;
+  sessionId?: SessionId | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "CanvasResponse".
+ */
+export interface CanvasResponse {
+  ops?: CanvasOp[];
+  actions?: ViewAction[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PanelTheme".
+ */
+export interface PanelTheme {
+  scheme: PanelScheme;
+  colors: {
+    category1?: string;
+    category2?: string;
+    category3?: string;
+    category4?: string;
+    category5?: string;
+    category6?: string;
+    danger?: string;
+    info?: string;
+    onPrimary?: string;
+    onPrimaryContainer?: string;
+    onSurface?: string;
+    onSurfaceVariant?: string;
+    outline?: string;
+    outlineVariant?: string;
+    primary?: string;
+    primaryContainer?: string;
+    secondaryContainer?: string;
+    success?: string;
+    surface?: string;
+    surfaceContainer?: string;
+    surfaceContainerHigh?: string;
+    warning?: string;
+  };
+  fontFamily: string;
+  fontMono: string;
+  fontSize: number;
+  radius: number;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginList".
+ */
+export interface PluginList {
+  node: string;
+  plugins: PluginRecord[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginRecord".
+ */
+export interface PluginRecord {
+  id: PluginId;
+  node: string;
+  path: string;
+  manifest: PluginManifest;
+  enabled: boolean;
+  state: PluginState;
+  granted: Permission[];
+  pending: Permission[];
+  error?: string | null;
+  lastExit?: PluginExit | null;
+  restarts: number;
+  startedAt?: number | null;
+  installedAt: number;
+  jobs: PluginJobStatus[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginExit".
+ */
+export interface PluginExit {
+  at: number;
+  code?: number | null;
+  signal?: string | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginJobStatus".
+ */
+export interface PluginJobStatus {
+  id: RouteName;
+  lastRun?: PluginJobRun | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginJobRun".
+ */
+export interface PluginJobRun {
+  runId: string;
+  trigger: PluginJobTrigger;
+  startedAt: number;
+  finishedAt?: number | null;
+  outcome?: PluginJobOutcome | null;
+  message?: string | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginInstallRequest".
+ */
+export interface PluginInstallRequest {
+  path: string;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginEnableRequest".
+ */
+export interface PluginEnableRequest {
+  approve?: Permission[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginLogs".
+ */
+export interface PluginLogs {
+  lines: PluginLogLine[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginLogLine".
+ */
+export interface PluginLogLine {
+  at: number;
+  stream: PluginLogStream;
+  text: string;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginSettings".
+ */
+export interface PluginSettings {
+  values: {
+    [k: string]: ViewValue;
+  };
+  secretsSet?: string[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginSettingsUpdate".
+ */
+export interface PluginSettingsUpdate {
+  values: {
+    [k: string]: ViewValue | null;
+  };
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "plugin.changed".
+ */
+export interface PluginChanged {
+  v: ProtocolVersion;
+  plugin: PluginId;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "plugin.views".
+ */
+export interface PluginViews {
+  v: ProtocolVersion;
+  plugin: PluginId;
+  views: RouteName[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginToolList".
+ */
+export interface PluginToolList {
+  version: number;
+  tools: PluginToolEntry[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginToolEntry".
+ */
+export interface PluginToolEntry {
+  plugin: PluginId;
+  tool: PluginTool;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginEventDelivery".
+ */
+export interface PluginEventDelivery {
+  seq: number;
+  at: number;
+  missed: number;
+  event: PluginEvent;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginJobRequest".
+ */
+export interface PluginJobRequest {
+  runId: string;
+  trigger: PluginJobTrigger;
+  scheduledAt?: number | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginJobResult".
+ */
+export interface PluginJobResult {
+  outcome: PluginJobOutcome;
+  message?: string | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginToolCall".
+ */
+export interface PluginToolCall {
+  arguments: {
+    [k: string]: unknown;
+  };
+  sessionId?: SessionId | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginToolResult".
+ */
+export interface PluginToolResult {
+  text: string;
+  isError?: boolean;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginSelf".
+ */
+export interface PluginSelf {
+  id: PluginId;
+  node: string;
+  version: string;
+  permissions: Permission[];
+  settings: {
+    [k: string]: ViewValue;
+  };
+  dataDir: string;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginViewsChanged".
+ */
+export interface PluginViewsChanged {
+  views: RouteName[];
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "PluginNotify".
+ */
+export interface PluginNotify {
+  title: string;
+  text?: string | null;
+  tone?: ViewTone | null;
+  action?: ViewAction | null;
+}
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "plugin.notification".
+ */
+export interface PluginNotification {
+  plugin: PluginId;
+  node: string;
+  title: string;
+  text?: string | null;
+  tone?: ViewTone | null;
+  action?: ViewAction | null;
+  ts: number;
 }
