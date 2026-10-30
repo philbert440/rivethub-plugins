@@ -56,6 +56,9 @@ Plugin::new(state)
     .await
 ```
 
+The TypeScript SDK also serves the `http/` routes: `http: { speak: (request) => response }` gets each
+`/http/speak/…` call as a web `Request`, body unread, and streams the `Response` it returns back through rh.
+
 On Linux rh confines a plug-in with Landlock to its own directory, its data and run folders and the program it runs, so
 a TypeScript plug-in runs a bundle (`npm run build` writes `dist/plugin.js` with esbuild) rather than sources that
 import from outside its directory, and a Rust plug-in runs its release binary.
