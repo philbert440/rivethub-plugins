@@ -1,4 +1,4 @@
-// Generated from philbert440/rivethub-runtime@542f8efdef0080940149a275fbfd883e4e63a6ab contract/accepted.schema.json by npm run contract. Do not edit.
+// Generated from philbert440/rivethub-runtime@36aa33c98fb8ef9e6ec7113cc70807954edbd933 contract/accepted.schema.json by npm run contract. Do not edit.
 
 use std::collections::BTreeMap;
 
