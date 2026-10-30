@@ -1,4 +1,4 @@
-// Generated from philbert440/rivethub-runtime@36aa33c98fb8ef9e6ec7113cc70807954edbd933 contract/accepted.schema.json by npm run contract. Do not edit.
+// Generated from philbert440/rivethub-runtime@5d5cc2744c01cb9f991b65b74b9a859b1d35f517 contract/accepted.schema.json by npm run contract. Do not edit.
 
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
@@ -715,6 +715,11 @@ export type AgentEventKind =
     };
 /**
  * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
+ * via the `definition` "ContextUsageSource".
+ */
+export type ContextUsageSource = "harness" | "last-call";
+/**
+ * This interface was referenced by `RivetHubContractAcceptedByTheRuntime`'s JSON-Schema
  * via the `definition` "HookEventName".
  */
 export type HookEventName =
@@ -1136,6 +1141,14 @@ export type HarnessEvent =
       turnId?: string | null;
       stopReason?: string | null;
       usage?: LlmUsage | null;
+      modelMs?: number | null;
+    }
+  | {
+      type: "context";
+      sessionId: SessionId;
+      used: number;
+      window?: number | null;
+      source: ContextUsageSource;
     }
   | {
       type: "error";
