@@ -17,6 +17,9 @@ gets promoted into the platform, with its domain moving into a runtime context a
   `GUIDE.md` for an agent building from it. It is the template rh's plug-in creator scaffolds from.
 - `plugins/voice`: speech to text and text to speech for the composer, on `http/transcribe` and `http/speak`, through
   the STT and TTS servers named in its settings. It replaces rh's `/api/voice` routes.
+- `plugins/files`: the Files page's and the workflow editor's file calls on `http/list`, `http/download`, `http/upload`,
+  `http/mkdir`, `http/rename` and `http/delete`, with the queries, bodies and errors of rh's `/api/files` routes, which it
+  replaces. Every path stays inside the folder its `root` setting names, links included.
 
 ## The contract
 
