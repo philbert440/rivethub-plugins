@@ -1,0 +1,29 @@
+[package]
+name = "rivethub-plugin"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.88"
+description = "Write RivetHub plug-ins in Rust: serve views, actions, canvases, tools, events and settings, and call rh"
+license = "Apache-2.0"
+repository = "https://github.com/philbert440/rivethub-plugins"
+publish = false
+
+[workspace]
+
+[dependencies]
+http-body-util = "0.1.3"
+hyper = { version = "1.7", features = ["client", "http1", "server"] }
+hyper-util = { version = "0.1.17", features = ["tokio"] }
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.145"
+tokio = { version = "1.48", features = ["net", "rt"] }
+
+[dev-dependencies]
+tokio = { version = "1.48", features = ["macros", "rt"] }
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+missing_errors_doc = "allow"

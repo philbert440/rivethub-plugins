@@ -1,6 +1,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { compile } from 'json-schema-to-typescript'
+import { rustContract } from './rust.ts'
 
 type Pin = { repository: string; ref: string }
 
@@ -50,6 +51,10 @@ for (const [direction, name] of Object.entries(DIRECTIONS)) {
     bannerComment: `// Generated from ${pin.repository}@${pin.ref} contract/${direction}.schema.json by npm run contract. Do not edit.`,
   })
   emit(join(PACKAGE, 'src', `${direction}.ts`), types)
+  if (direction === 'accepted') {
+    const banner = `Generated from ${pin.repository}@${pin.ref} contract/accepted.schema.json by npm run contract. Do not edit.`
+    emit(join(ROOT, 'rust', 'rivethub-plugin', 'src', 'contract.rs'), rustContract(JSON.parse(schema), banner))
+  }
 }
 
 if (stale.length > 0) {
