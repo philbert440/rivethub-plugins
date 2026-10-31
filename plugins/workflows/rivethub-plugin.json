@@ -1,0 +1,22 @@
+{
+  "manifest": 1,
+  "id": "workflows",
+  "name": "Workflows",
+  "version": "0.1.0",
+  "description": "Define an ordered list of agent steps and run them, passing each step's result to the next.",
+  "icon": "account_tree",
+  "run": {
+    "command": ["node", "plugin.js"]
+  },
+  "permissions": ["tasks.delegate", "tasks.read"],
+  "contributes": {
+    "pages": [
+      {
+        "id": "workflows",
+        "title": "Workflows",
+        "icon": "account_tree",
+        "view": "main"
+      }
+    ]
+  }
+}
