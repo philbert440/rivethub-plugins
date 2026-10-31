@@ -1,0 +1,19 @@
+{
+  "manifest": 1,
+  "id": "files",
+  "name": "Files",
+  "version": "0.1.0",
+  "description": "Browse, upload, rename and delete files under one folder of this node, for the Files page and the workflow editor.",
+  "icon": "folder",
+  "run": { "command": ["node", "dist/plugin.js"] },
+  "permissions": ["host.files.read", "host.files.write"],
+  "settings": [
+    {
+      "key": "root",
+      "label": "Files root",
+      "input": { "type": "text" },
+      "help": "The absolute folder the Files page and the workflow editor work in. Nothing outside it is reachable, through links either.",
+      "placeholder": "/srv/shared"
+    }
+  ]
+}

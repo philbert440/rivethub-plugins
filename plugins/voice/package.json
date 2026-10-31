@@ -1,0 +1,15 @@
+{
+  "name": "voice",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/plugin.ts --bundle --platform=node --format=esm --target=node22 --outfile=dist/plugin.js"
+  },
+  "dependencies": {
+    "@rivethub/plugin-sdk": "0.7.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}

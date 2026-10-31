@@ -7,7 +7,8 @@
   },
   "workspaces": [
     "packages/*",
-    "templates/typescript"
+    "templates/typescript",
+    "plugins/*"
   ],
   "scripts": {
     "check": "npm run lint && npm run typecheck && npm test && npm run contract:check && npm run privacy && npm run rust",

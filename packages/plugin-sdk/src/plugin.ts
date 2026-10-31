@@ -32,6 +32,7 @@ export interface Plugin {
   >
   events?: EventHandlers
   jobs?: Record<string, (request: PluginJobRequest) => Awaitable<string | undefined>>
+  http?: Record<string, (request: Request) => Awaitable<Response>>
   settings?: (values: Settings) => Awaitable<void>
 }
 
