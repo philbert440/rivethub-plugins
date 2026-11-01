@@ -59,6 +59,46 @@ async function waitTask(taskId) {
   throw new Error(`timed out waiting for task ${taskId}`)
 }
 
+/** The agents rh can delegate a step to: each by the name a step uses, with where it runs, and every
+ * name or id rh takes for one. Undefined when rh's catalog can't be read, in which case a step's
+ * agent is checked only when it runs. */
+async function knownAgents() {
+  try {
+    const body = await rh.request('GET', '/api/catalog/agents')
+    const listed = new Map()
+    const taken = new Set()
+    for (const agent of body?.agents ?? []) {
+      const name = textOf(agent.name) || textOf(agent.id)
+      if (name === '') continue
+      if (!listed.has(name)) listed.set(name, textOf(agent.node))
+      taken.add(name)
+      if (textOf(agent.id) !== '') taken.add(agent.id)
+    }
+    return { listed, taken }
+  } catch (error) {
+    console.error(`reading rh's agent catalog failed: ${error instanceof Error ? error.message : String(error)}`)
+    return undefined
+  }
+}
+
+/** Why a step can't name `agent`, or undefined when it can: rh knows no agent by that name. */
+function unknownAgent(agent, agents) {
+  if (agents === undefined || agents.taken.has(agent.split('@')[0])) return undefined
+  const names = [...agents.listed.keys()].slice(0, 8).join(', ')
+  return names === ''
+    ? `rh knows no agent called "${agent}", and lists none.`
+    : `rh knows no agent called "${agent}". It knows ${names}.`
+}
+
+/** Refuses a workflow whose steps name an agent rh doesn't know, naming the first such step. */
+async function checkSteps(workflow) {
+  const agents = await knownAgents()
+  for (const step of store.steps(workflow.id)) {
+    const why = unknownAgent(step.agent, agents)
+    if (why !== undefined) throw new Refusal(`Step ${step.position} can't run: ${why} Remove it and add it again.`)
+  }
+}
+
 async function changed() {
   try {
     await rh.viewsChanged(['main', 'run'])
@@ -70,12 +110,14 @@ async function changed() {
 async function execute(runId) {
   const steps = store.runSteps(runId)
   let previous = ''
+  let current
   try {
     for (const step of steps) {
       if (step.status === 'completed' && typeof step.result === 'string') {
         previous = step.result
         continue
       }
+      current = step
       store.markStepRunning(step.id, step.taskId ?? null)
       await changed()
       let taskId = step.taskId ?? undefined
@@ -92,7 +134,6 @@ async function execute(runId) {
             },
           ],
           budget: { maxWallClockMs: STEP_BUDGET_MS },
-          spec: { delegation: true, excludeTools: ['delegate_task'] },
         })
         taskId = created?.task?.id
         if (typeof taskId !== 'string' || taskId === '') throw new Error('delegate_task returned no task id')
@@ -116,6 +157,7 @@ async function execute(runId) {
     console.log(`run ${runId} completed`)
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error)
+    if (current !== undefined) store.finishStep(current.id, 'failed', message)
     store.finishRun(runId, 'failed', message)
     console.error(`run ${runId} failed: ${message}`)
   }
@@ -224,7 +266,7 @@ function main() {
   }
 }
 
-function editor({ params }) {
+async function editor({ params }) {
   const id = textOf(params?.id)
   const workflow = id === '' ? undefined : store.get(id)
   if (id !== '' && workflow === undefined) {
@@ -243,6 +285,7 @@ function editor({ params }) {
   }
   const steps = workflow === undefined ? [] : store.steps(workflow.id)
   const owned = workflow === undefined ? {} : { id: workflow.id }
+  const agents = await knownAgents()
   return {
     title: workflow === undefined ? 'New workflow' : workflow.name,
     subtitle:
@@ -275,14 +318,28 @@ function editor({ params }) {
             value: workflow?.name ?? '',
             placeholder: 'PR review',
           },
-          {
-            key: 'agent',
-            label: 'Step agent',
-            input: { type: 'text' },
-            required: true,
-            placeholder: 'Local',
-            help: 'A preset or runtime agent name. delegate_task receives this name.',
-          },
+          agents === undefined || agents.listed.size === 0
+            ? {
+                key: 'agent',
+                label: 'Step agent',
+                input: { type: 'text' },
+                required: true,
+                placeholder: 'Local',
+                help: 'A preset or an agent a node runs, by name.',
+              }
+            : {
+                key: 'agent',
+                label: 'Step agent',
+                input: {
+                  type: 'select',
+                  options: [...agents.listed].map(([name, node]) => ({
+                    value: name,
+                    label: node === '' ? name : `${name} · ${node}`,
+                  })),
+                },
+                required: true,
+                help: 'The agent that runs this step, from the ones rh can delegate to.',
+              },
           {
             key: 'prompt',
             label: 'Step prompt',
@@ -421,6 +478,9 @@ function run({ params }) {
             : []),
         ],
       },
+      ...(record.status !== 'completed' && record.status !== 'running' && textOf(record.result) !== ''
+        ? [{ type: 'notice', tone: toneOf(record.status), title: failedTitle(steps), text: record.result }]
+        : []),
       ...steps.map((step) => ({
         type: 'section',
         title: `${step.position}. ${step.agent}`,
@@ -443,6 +503,12 @@ function run({ params }) {
   }
 }
 
+function failedTitle(steps) {
+  const step = steps.find((candidate) => candidate.status !== 'completed' && candidate.status !== 'pending')
+  if (step === undefined) return 'The run stopped'
+  return `Step ${step.position} ${step.status === 'timeout' ? 'timed out' : step.status}`
+}
+
 const requireWorkflow = (params) => {
   const id = textOf(params?.id)
   const workflow = id === '' ? undefined : store.get(id)
@@ -453,7 +519,7 @@ const requireWorkflow = (params) => {
 await serve({
   views: { main, editor, history, run },
   actions: {
-    add_step: ({ params, values }) => {
+    add_step: async ({ params, values }) => {
       const name = textOf(values?.name)
       const agent = textOf(values?.agent)
       const prompt = textOf(values?.prompt)
@@ -462,6 +528,8 @@ await serve({
       if (agent === '') fields.agent = 'Required'
       if (prompt === '') fields.prompt = 'Required'
       if (Object.keys(fields).length > 0) throw new Refusal('Name, agent, and prompt are required.', fields)
+      const why = unknownAgent(agent, await knownAgents())
+      if (why !== undefined) throw new Refusal(why, { agent: 'Not an agent rh knows' })
       const existing = textOf(params?.id)
       const id = existing === '' ? store.create(name).id : requireWorkflow(params).id
       if (existing !== '') store.rename(id, name)
@@ -471,10 +539,11 @@ await serve({
         { type: 'toast', text: `Added a step for ${agent}`, tone: 'success' },
       ]
     },
-    save: ({ params, values }) => {
+    save: async ({ params, values }) => {
       const name = textOf(values?.name)
       if (name === '') throw new Refusal('Give the workflow a name.', { name: 'Required' })
       const existing = textOf(params?.id)
+      if (existing !== '') await checkSteps(requireWorkflow(params))
       const id = existing === '' ? store.create(name).id : requireWorkflow(params).id
       if (existing !== '') store.rename(id, name)
       return [
@@ -501,9 +570,10 @@ await serve({
         { type: 'toast', text: `Deleted ${workflow.name}`, tone: 'success' },
       ]
     },
-    run: ({ params }) => {
+    run: async ({ params }) => {
       const workflow = requireWorkflow(params)
       if (store.steps(workflow.id).length === 0) throw new Refusal('Add at least one step before running.')
+      await checkSteps(workflow)
       if (store.activeRun(workflow.id) !== undefined) throw new Refusal('A run is already in progress.')
       const record = store.startRun(workflow)
       void execute(record.id)
