@@ -8,7 +8,7 @@
   "run": {
     "command": ["node", "plugin.js"]
   },
-  "permissions": ["tasks.delegate", "tasks.read"],
+  "permissions": ["tasks.delegate", "tasks.read", "agents.read"],
   "contributes": {
     "pages": [
       {
