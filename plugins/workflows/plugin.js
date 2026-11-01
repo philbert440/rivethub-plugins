@@ -70,12 +70,14 @@ async function changed() {
 async function execute(runId) {
   const steps = store.runSteps(runId)
   let previous = ''
+  let current
   try {
     for (const step of steps) {
       if (step.status === 'completed' && typeof step.result === 'string') {
         previous = step.result
         continue
       }
+      current = step
       store.markStepRunning(step.id, step.taskId ?? null)
       await changed()
       let taskId = step.taskId ?? undefined
@@ -116,6 +118,7 @@ async function execute(runId) {
     console.log(`run ${runId} completed`)
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error)
+    if (current !== undefined) store.finishStep(current.id, 'failed', message)
     store.finishRun(runId, 'failed', message)
     console.error(`run ${runId} failed: ${message}`)
   }
@@ -421,6 +424,9 @@ function run({ params }) {
             : []),
         ],
       },
+      ...(record.status !== 'completed' && record.status !== 'running' && textOf(record.result) !== ''
+        ? [{ type: 'notice', tone: toneOf(record.status), title: failedTitle(steps), text: record.result }]
+        : []),
       ...steps.map((step) => ({
         type: 'section',
         title: `${step.position}. ${step.agent}`,
@@ -441,6 +447,12 @@ function run({ params }) {
       })),
     ],
   }
+}
+
+function failedTitle(steps) {
+  const step = steps.find((candidate) => candidate.status !== 'completed' && candidate.status !== 'pending')
+  if (step === undefined) return 'The run stopped'
+  return `Step ${step.position} ${step.status === 'timeout' ? 'timed out' : step.status}`
 }
 
 const requireWorkflow = (params) => {
